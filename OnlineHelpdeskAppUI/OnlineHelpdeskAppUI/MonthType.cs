@@ -11,6 +11,7 @@ namespace OnlineHelpdeskAppUI
         One = 1,
         Three = 3,
         Six = 6,
-        twelve = 12
+        twelve = 12,
+        Eighteen = 18
     }
 }
