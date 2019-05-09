@@ -10,6 +10,20 @@ namespace OnlineHelpdeskAppUI.Core
 {
     public static class Extension
     {
+        public static bool HasTicket(this DbSet<Ticket> dbSet, string title)
+        {
+            bool hasTicket = false;
+            foreach (Ticket ticket in dbSet.GetAll())
+            {
+                if (String.Compare(ticket.Title,title, StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    hasTicket = true;
+                    break;
+                }
+            } 
+            return hasTicket;
+        }
+
         public static Card FindCardByNumber(this DbSet<Card> dbset, string cardNumber)
         {
             Card _card = null;

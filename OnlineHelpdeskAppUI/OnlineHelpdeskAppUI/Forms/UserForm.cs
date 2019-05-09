@@ -27,5 +27,15 @@ namespace OnlineHelpdeskAppUI.Forms
         {
             lbl_greetings.Text += Session.User.Email;
         }
+
+        private void link_addticket_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new AddTicketForm(this).ShowDialog();
+        }
+
+        private void link_tickets_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new TicketsForm().ShowDialog();
+        }
     }
 }

@@ -98,6 +98,7 @@
             this.Controls.Add(this.link_cards);
             this.Controls.Add(this.link_addcard);
             this.Controls.Add(this.btn_logout);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AdminForm";
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);

@@ -29,5 +29,10 @@ namespace OnlineHelpdeskAppUI.App_Data
         {
             return _items;
         }
+
+        public int Count()
+        {
+            return _items.Count();
+        }
     }
 }

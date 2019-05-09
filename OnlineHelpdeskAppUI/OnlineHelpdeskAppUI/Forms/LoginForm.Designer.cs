@@ -88,6 +88,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txbx_login_password);
             this.Controls.Add(this.label7);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.ResumeLayout(false);

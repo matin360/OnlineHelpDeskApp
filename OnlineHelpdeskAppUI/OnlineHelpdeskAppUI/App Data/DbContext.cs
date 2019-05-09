@@ -14,6 +14,8 @@ namespace OnlineHelpdeskAppUI.App_Data
 
         public static DbSet<User> Users { get; set; }
 
+        public static DbSet<Ticket> Tickets { get; set; }
+
         public static void AddDefaultUsers()
         {
             User admin = new User()
@@ -26,12 +28,23 @@ namespace OnlineHelpdeskAppUI.App_Data
                 UserType = UserType.Admin
             };
             Users.Add(admin);
+            User testUser = new User()
+            {
+                Name = "Test",
+                Surname = "Test",
+                Email = "test@gmail.com",
+                Id = Identifier<User>.GenereteId(),
+                Password = "1234",
+                UserType = UserType.User
+            };
+            Users.Add(testUser);
         }
 
         static DbContext()
         {
             Cards = new DbSet<Card>();
             Users = new DbSet<User>();
+            Tickets = new DbSet<Ticket>();
             AddDefaultUsers();
        }
     }
