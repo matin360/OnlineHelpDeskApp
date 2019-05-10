@@ -68,21 +68,21 @@ namespace OnlineHelpdeskAppUI.Forms
 
         private void btn_card_register_Click(object sender, EventArgs e)
         {
-            if (txbx_password.Text != txbx_confirmPassword.Text)
+            if (txbx_card_paswword.Text != txbx_card_confirmPassword.Text)
             {
                 MessageBox.Show("Passwords are not the same!");
                 return;
             }
             Card card = DbContext.Cards.FindCardByNumber(txbx_cardNumber.Text);
-            if (card != null)
+            if (card == null)
             {
                 MessageBox.Show("Card is not valid");
                 return;
             }
             User user = new User
             {
-                Email = txbx_email.Text,
-                Password = txbx_password.Text,
+                Email = txbx_card_email.Text,
+                Password = txbx_card_paswword.Text,
                 Id = Identifier<User>.GenereteId(),
                 UserType = UserType.User
             };

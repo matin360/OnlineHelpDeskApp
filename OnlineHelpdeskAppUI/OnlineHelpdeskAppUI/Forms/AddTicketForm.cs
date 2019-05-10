@@ -45,7 +45,7 @@ namespace OnlineHelpdeskAppUI.Forms
 
         private void AddTicketForm_Load(object sender, EventArgs e)
         {
-            link_number.Text = DbContext.Tickets.Count().ToString();
+            link_number.Text = DbContext.Tickets.CountTickets(Session.User.Id).ToString();
         }
     }
 }

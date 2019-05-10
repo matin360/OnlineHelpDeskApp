@@ -33,6 +33,7 @@
             this.link_cards = new System.Windows.Forms.LinkLabel();
             this.link_users = new System.Windows.Forms.LinkLabel();
             this.lbl_greetings = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btn_logout
@@ -88,11 +89,23 @@
             this.lbl_greetings.Text = "Welcome, ";
             this.lbl_greetings.Click += new System.EventHandler(this.lbl_greetings_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(25, 285);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(96, 17);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "New Operator";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.lbl_greetings);
             this.Controls.Add(this.link_users);
             this.Controls.Add(this.link_cards);
@@ -114,5 +127,6 @@
         private System.Windows.Forms.LinkLabel link_cards;
         private System.Windows.Forms.LinkLabel link_users;
         private System.Windows.Forms.Label lbl_greetings;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

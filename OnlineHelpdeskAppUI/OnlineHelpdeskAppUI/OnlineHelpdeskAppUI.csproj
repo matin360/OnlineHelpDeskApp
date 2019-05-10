@@ -56,6 +56,12 @@
     <Compile Include="App Data\DbSet.cs" />
     <Compile Include="CardAmountType.cs" />
     <Compile Include="CardDataDictionary.cs" />
+    <Compile Include="Components\RegisterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\RegisterControl.Designer.cs">
+      <DependentUpon>RegisterControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\EnumHelper.cs" />
     <Compile Include="Core\Extension.cs" />
     <Compile Include="Core\Identificator.cs" />
@@ -88,6 +94,12 @@
     </Compile>
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\New Operator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\New Operator.Designer.cs">
+      <DependentUpon>New Operator.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
@@ -125,6 +137,9 @@
     <EmbeddedResource Include="AddCardForm.resx">
       <DependentUpon>AddCardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\RegisterControl.resx">
+      <DependentUpon>RegisterControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddTicketForm.resx">
       <DependentUpon>AddTicketForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\New Operator.resx">
+      <DependentUpon>New Operator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>

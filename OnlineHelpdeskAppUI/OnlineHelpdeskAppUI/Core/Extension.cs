@@ -5,11 +5,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OnlineHelpdeskAppUI.Core
 {
     public static class Extension
     {
+        public static int CountTickets(this DbSet<Ticket> dbSet, int Id)
+        {
+            return GetTicketsByUserId(dbSet, Id).Count();
+        }
+
+        public static List<Ticket> GetTicketsByUserId(this DbSet<Ticket> tickets, int userId)
+        {
+            User user = GetUserById(userId);
+            List<Ticket> _tickets = new List<Ticket>();
+                foreach(Ticket ticket in DbContext.Tickets.GetAll())
+            {
+                if (ticket != null)
+                {
+                    if (user.UserType == UserType.User && ticket.UserId == user.Id)
+                    { 
+                        _tickets.Add(ticket);
+                    }
+                }
+                else
+                    MessageBox.Show("You do not have any tickets!");             
+            }
+            return _tickets;
+        }
+
+        private static User GetUserById(int id)
+        {
+            User _user = null;
+            foreach (User user in DbContext.Users.GetAll())
+            {
+                if (user.Id == id )
+                {
+                    _user = user;
+                }
+            }
+            return _user;
+        }
+
         public static bool HasTicket(this DbSet<Ticket> dbSet, string title)
         {
             bool hasTicket = false;

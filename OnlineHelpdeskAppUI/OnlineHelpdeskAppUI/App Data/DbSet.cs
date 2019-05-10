@@ -30,7 +30,7 @@ namespace OnlineHelpdeskAppUI.App_Data
             return _items;
         }
 
-        public int Count()
+        public virtual int Count()
         {
             return _items.Count();
         }

@@ -9,6 +9,7 @@ namespace OnlineHelpdeskAppUI
     public enum UserType : byte
     {
         Admin = 1,
-        User = 2
+        User = 2,
+        Operator = 3
     }
 }

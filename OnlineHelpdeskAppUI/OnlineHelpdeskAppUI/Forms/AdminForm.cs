@@ -47,5 +47,10 @@ namespace OnlineHelpdeskAppUI.Forms
         {
             lbl_greetings.Text += Session.User.Email;
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new New_Operator().ShowDialog();
+        }
     }
 }

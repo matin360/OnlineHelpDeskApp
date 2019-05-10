@@ -1,4 +1,5 @@
 ﻿using OnlineHelpdeskAppUI.App_Data;
+using OnlineHelpdeskAppUI.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace OnlineHelpdeskAppUI.Forms
 
         private void TicketsForm_Load(object sender, EventArgs e)
         {
-            dgv_tickets.DataSource = DbContext.Tickets.GetAll();
+            dgv_tickets.DataSource = DbContext.Tickets.GetTicketsByUserId(Session.User.Id);
         }
     }
 }
