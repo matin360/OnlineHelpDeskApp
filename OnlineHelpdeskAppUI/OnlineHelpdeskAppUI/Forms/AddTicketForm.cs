@@ -40,7 +40,7 @@ namespace OnlineHelpdeskAppUI.Forms
             }
             else
                 MessageBox.Show("Duplicating tickets is not allowed!");
-            link_number.Text = DbContext.Tickets.Count().ToString();
+            link_number.Text = DbContext.Tickets.CountTickets(Session.User.Id).ToString();
         }
 
         private void AddTicketForm_Load(object sender, EventArgs e)

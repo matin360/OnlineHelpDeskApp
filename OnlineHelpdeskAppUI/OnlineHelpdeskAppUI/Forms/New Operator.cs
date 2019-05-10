@@ -51,5 +51,10 @@ namespace OnlineHelpdeskAppUI.Forms
         {
 
         }
+
+        private void registerControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

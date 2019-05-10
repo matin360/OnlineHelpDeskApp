@@ -54,7 +54,7 @@ namespace OnlineHelpdeskAppUI.Forms
         {
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("matin.manafov@aiesec.net", "XMLSULBW"),
+                Credentials = new NetworkCredential("kamran.test.backend@gmail.com", "KQ17782026"),
                 EnableSsl = true
         };
             
@@ -62,7 +62,7 @@ namespace OnlineHelpdeskAppUI.Forms
             int code = random.Next(1000, 9999);
             Session.Code = code.ToString();
             string message = $"Your code is {code}";
-            smtpClient.Send("matin.manafov@aiesec.net", toEmail, "Code cofirmation for OnlineHelpDesk", message);
+            smtpClient.Send("kamran.test.backend@gmail.com", toEmail, "Code cofirmation for OnlineHelpDesk", message);
 
         }
 

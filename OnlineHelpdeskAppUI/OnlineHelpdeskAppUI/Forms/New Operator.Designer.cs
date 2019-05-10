@@ -37,6 +37,7 @@
             this.registerControl.Name = "registerControl";
             this.registerControl.Size = new System.Drawing.Size(221, 322);
             this.registerControl.TabIndex = 0;
+            this.registerControl.Load += new System.EventHandler(this.registerControl_Load);
             // 
             // New_Operator
             // 
