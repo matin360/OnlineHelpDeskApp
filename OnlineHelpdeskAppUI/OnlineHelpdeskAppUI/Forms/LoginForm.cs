@@ -34,9 +34,14 @@ namespace OnlineHelpdeskAppUI.Forms
                     new AdminForm().Show();
                     Close();
                 }
-                else
+                else if(user.UserType == UserType.User)
                 {
                     new UserForm().Show();
+                    Close();
+                }
+                else if (user.UserType == UserType.Operator)
+                {
+                    new OperatorForm().Show();
                     Close();
                 }
             }

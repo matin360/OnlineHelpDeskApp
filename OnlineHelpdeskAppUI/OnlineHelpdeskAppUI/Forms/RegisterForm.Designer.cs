@@ -153,6 +153,7 @@
             // 
             this.txbx_card_paswword.Location = new System.Drawing.Point(451, 203);
             this.txbx_card_paswword.Name = "txbx_card_paswword";
+            this.txbx_card_paswword.PasswordChar = '*';
             this.txbx_card_paswword.Size = new System.Drawing.Size(211, 22);
             this.txbx_card_paswword.TabIndex = 13;
             // 
