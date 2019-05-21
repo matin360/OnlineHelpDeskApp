@@ -54,7 +54,7 @@ namespace OnlineHelpdeskAppUI.App_Data
                 Title = "bbbbbbb",
                 UserId = testUser.Id,
                 TicketStatus = TicketStatus.Open,
-                Description = "ggggggg"
+                Description = "ggggggg",
             };
             Tickets.Add(ticket1);
             Ticket ticket2 = new Ticket()

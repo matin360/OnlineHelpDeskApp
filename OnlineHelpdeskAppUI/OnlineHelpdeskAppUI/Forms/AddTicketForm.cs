@@ -31,7 +31,7 @@ namespace OnlineHelpdeskAppUI.Forms
                 Title = txbx_title.Text,
                 UserId = Session.User.Id,
                 TicketStatus = TicketStatus.Open,
-                Description = txbx_decription.Text
+                Description = txbx_decription.Text,
             };
             if (!DbContext.Tickets.HasTicket(ticket.Title))
             {

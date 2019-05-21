@@ -16,6 +16,22 @@ namespace OnlineHelpdeskAppUI.Core
             return GetTicketsByUserId(dbSet, Id).Count();
         }
 
+        public static Ticket GetTicketById(this DbSet<Ticket> tickets, int Id)
+        {
+            Ticket _ticket = new Ticket();
+            foreach (Ticket ticket in DbContext.Tickets.GetAll())
+            {
+                if (ticket != null)
+                {
+                    if (ticket.Id == Id)
+                    {
+                        _ticket = ticket;
+                    }
+                }
+            }
+            return _ticket;
+        }
+
         public static List<Ticket> GetTicketsByUserId(this DbSet<Ticket> tickets, int userId)
         {
             User user = GetUserById(userId);
@@ -38,9 +54,11 @@ namespace OnlineHelpdeskAppUI.Core
         private static User GetUserById(int id)
         {
             User _user = null;
+            
             foreach (User user in DbContext.Users.GetAll())
             {
-                if (user.Id == id )
+                int userId = user.Id;
+                if (userId == id )
                 {
                     _user = user;
                 }

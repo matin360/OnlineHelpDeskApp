@@ -21,5 +21,6 @@ namespace OnlineHelpdeskAppUI.Models
         public TicketStatus TicketStatus { get; set; }
         public DateTime? ClosedDate { get; set; }
         public int? OperatorId { get; set; }
+        public string TicketIssue { get; set; }
     }
 }
