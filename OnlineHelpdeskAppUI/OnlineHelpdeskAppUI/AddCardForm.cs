@@ -1,5 +1,6 @@
 ﻿using OnlineHelpdeskAppUI.App_Data;
 using OnlineHelpdeskAppUI.Core;
+using OnlineHelpdeskAppUI.Exceptions;
 using OnlineHelpdeskAppUI.Models;
 using System;
 using System.Collections.Generic;
@@ -37,21 +38,58 @@ namespace OnlineHelpdeskAppUI
             txbx_expireDate.Text = DateTime.Now.AddMonths((int)monthType).ToString();
         }
 
+        private CardAmountType GetCardAmountTypeFromString(string amount)
+        {
+            CardAmountType cardAmountType;
+            if (amount == null)
+            {
+                throw new ArgumentNullException("Amount cannot be null!");
+            }
+            else if (amount.Length == 0)
+            {
+                throw new DataEmptyException("Amount cannot be empty!");
+            }
+            else if (!int.TryParse(amount, out int result))
+            {
+                throw new ArgumentException("Amount is not a number!");
+            }
+            else
+            {
+                cardAmountType = EnumHelper.StringToEnum<CardAmountType>(amount);
+            }
+            return cardAmountType; 
+        }
+
         private void btn_addCard_Click(object sender, EventArgs e)
         {
-            CardAmountType amountType = EnumHelper.StringToEnum<CardAmountType>(txbx_amount.Text);
-            DateTime expireDate = DateTime.Parse(txbx_expireDate.Text);
-
-            Card card = new Card
+            try
             {
-                CreateDate = DateTime.Now,
-                cardAmountType = amountType,
-                ExpireDate = expireDate,
-                Number = txbx_cardNumber.Text,
-                Id = Identifier<Card>.GenereteId()
-                
-            };
-            DbContext.Cards.Add(card);
+                CardAmountType amountType = GetCardAmountTypeFromString(txbx_amount.Text);
+                DateTime expireDate = DateTime.Parse(txbx_expireDate.Text);
+
+                Card card = new Card
+                {
+                    CreateDate = DateTime.Now,
+                    cardAmountType = amountType,
+                    ExpireDate = expireDate,
+                    Number = txbx_cardNumber.Text,
+                    Id = Identifier<Card>.GenereteId()
+
+                };
+                DbContext.Cards.Add(card);
+            }
+            catch (ArgumentNullException exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+            catch (DataEmptyException exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+            catch (ArgumentException exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
             ShowStastics();
 
 
