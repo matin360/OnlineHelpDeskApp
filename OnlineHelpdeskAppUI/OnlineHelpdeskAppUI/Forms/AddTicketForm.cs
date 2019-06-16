@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OnlineHelpdeskAppUI.App_Data;
 using OnlineHelpdeskAppUI.Core;
+using OnlineHelpdeskAppUI.Exceptions;
 using OnlineHelpdeskAppUI.Models;
 
 namespace OnlineHelpdeskAppUI.Forms
@@ -23,8 +24,38 @@ namespace OnlineHelpdeskAppUI.Forms
             _userForm = userForm;
         }
 
+        private void CheckValidatyGivenData(string data)
+        {      
+            if(data == null)
+            {
+                throw new ArgumentNullException("Given data cannot be null!");
+            }
+            else if (data.Length == 0)
+            {
+                throw new DataEmptyException("Given data cannot be empty!");
+            }
+            else
+            {
+
+            }
+        }
+
         private void btn_addticket_Click(object sender, EventArgs e)
         {
+            try
+            {
+                CheckValidatyGivenData(txbx_title.Text);
+                CheckValidatyGivenData(txbx_decription.Text);
+               
+            }
+            catch (ArgumentNullException exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+            catch (DataEmptyException exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
             Ticket ticket = new Ticket()
             {
                 Id = Identifier<Ticket>.GenereteId(),
@@ -40,6 +71,7 @@ namespace OnlineHelpdeskAppUI.Forms
             }
             else
                 MessageBox.Show("Duplicating tickets is not allowed!");
+
             link_number.Text = DbContext.Tickets.CountTickets(Session.User.Id).ToString();
         }
 
