@@ -1,5 +1,6 @@
 ﻿using OnlineHelpdeskAppUI.App_Data;
 using OnlineHelpdeskAppUI.Core;
+using OnlineHelpdeskAppUI.Exceptions;
 using OnlineHelpdeskAppUI.Models;
 using System;
 using System.Collections.Generic;
@@ -29,25 +30,34 @@ namespace OnlineHelpdeskAppUI.Forms
 
         private void btn_register_Click(object sender, EventArgs e)
         {
-            if(txbx_password.Text != txbx_confirmPassword.Text)
+            if (txbx_password.Text != txbx_confirmPassword.Text)
             {
                 MessageBox.Show("Passwords are not the same!");
                 return;
             }
-            User user = new User
+            try
             {
-                Email = txbx_email.Text,
-                Name = txbx_name.Text,
-                Surname = txbx_surname.Text,
-                Password = txbx_password.Text,
-                Id = Identifier<User>.GenereteId(),
-                UserType = UserType.User,
-                IsEmailConfirmed = false
-            };
-            DbContext.Users.Add(user);
-            Session.User = user;
-            SendEmail(txbx_email.Text);
-            new CodeCofirmationForm().ShowDialog();
+                Validator.Validation(txbx_confirmPassword.Text, txbx_email.Text, txbx_name.Text, txbx_password.Text, txbx_surname.Text);
+                User user = new User
+                {
+                    Email = txbx_email.Text,
+                    Name = txbx_name.Text,
+                    Surname = txbx_surname.Text,
+                    Password = txbx_password.Text,
+                    Id = Identifier<User>.GenereteId(),
+                    UserType = UserType.User,
+                    IsEmailConfirmed = false
+                };
+                DbContext.Users.Add(user);
+                Session.User = user;
+                SendEmail(txbx_email.Text);
+                new CodeCofirmationForm().ShowDialog();
+            }
+            catch (DataEmptyException exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+            
         }
 
         private void SendEmail(string toEmail)
@@ -68,6 +78,18 @@ namespace OnlineHelpdeskAppUI.Forms
 
         private void btn_card_register_Click(object sender, EventArgs e)
         {
+           
+            try
+            {
+                Validator.Validation(txbx_cardNumber.Text, txbx_card_confirmPassword.Text, txbx_card_email.Text, txbx_card_paswword.Text);
+                
+
+            }
+            catch(DataEmptyException exp)
+            {
+                MessageBox.Show(exp.Message);
+                return;
+            }
             if (txbx_card_paswword.Text != txbx_card_confirmPassword.Text)
             {
                 MessageBox.Show("Passwords are not the same!");
@@ -96,5 +118,6 @@ namespace OnlineHelpdeskAppUI.Forms
             Session.Mainform = this;
             new LoginForm().ShowDialog();
         }
+
     }
 }

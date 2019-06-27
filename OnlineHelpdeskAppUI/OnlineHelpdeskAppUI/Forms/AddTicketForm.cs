@@ -46,7 +46,21 @@ namespace OnlineHelpdeskAppUI.Forms
             {
                 CheckValidatyGivenData(txbx_title.Text);
                 CheckValidatyGivenData(txbx_decription.Text);
-               
+                Ticket ticket = new Ticket()
+                {
+                    Id = Identifier<Ticket>.GenereteId(),
+                    Title = txbx_title.Text,
+                    UserId = Session.User.Id,
+                    TicketStatus = TicketStatus.Open,
+                    Description = txbx_decription.Text,
+                };
+                if (!DbContext.Tickets.HasTicket(ticket.Title))
+                {
+                    DbContext.Tickets.Add(ticket);
+                    MessageBox.Show("Your ticket added");
+                }
+                else
+                    MessageBox.Show("Duplicating tickets is not allowed!");
             }
             catch (ArgumentNullException exp)
             {
@@ -56,21 +70,7 @@ namespace OnlineHelpdeskAppUI.Forms
             {
                 MessageBox.Show(exp.Message);
             }
-            Ticket ticket = new Ticket()
-            {
-                Id = Identifier<Ticket>.GenereteId(),
-                Title = txbx_title.Text,
-                UserId = Session.User.Id,
-                TicketStatus = TicketStatus.Open,
-                Description = txbx_decription.Text,
-            };
-            if (!DbContext.Tickets.HasTicket(ticket.Title))
-            {
-                DbContext.Tickets.Add(ticket);
-                MessageBox.Show("Your ticket added");
-            }
-            else
-                MessageBox.Show("Duplicating tickets is not allowed!");
+            
 
             link_number.Text = DbContext.Tickets.CountTickets(Session.User.Id).ToString();
         }

@@ -71,6 +71,7 @@
     <Compile Include="Core\EnumHelper.cs" />
     <Compile Include="Core\Extension.cs" />
     <Compile Include="Core\Identificator.cs" />
+    <Compile Include="Core\Validator.cs" />
     <Compile Include="Exceptions\DataEmptyException.cs" />
     <Compile Include="Forms\AddTicketForm.cs">
       <SubType>Form</SubType>

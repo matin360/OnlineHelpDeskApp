@@ -1,5 +1,6 @@
 ﻿using OnlineHelpdeskAppUI.App_Data;
 using OnlineHelpdeskAppUI.Core;
+using OnlineHelpdeskAppUI.Exceptions;
 using OnlineHelpdeskAppUI.Models;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,16 @@ namespace OnlineHelpdeskAppUI.Forms
         {
             string email = txbx_login_email.Text;
             string password = txbx_login_password.Text;
-
+            try
+            {
+                Validator.Validation(email, password);
+                
+            }
+            catch (DataEmptyException exp)
+            {
+                MessageBox.Show(exp.Message);
+                return;
+            }
             User user = DbContext.Users.FindUserByEmail(email);
             Session.User = user;
             if (user != null && user.Email == email && user.Password == password)

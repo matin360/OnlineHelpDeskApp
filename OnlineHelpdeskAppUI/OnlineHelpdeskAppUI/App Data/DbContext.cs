@@ -51,19 +51,19 @@ namespace OnlineHelpdeskAppUI.App_Data
             Ticket ticket1 = new Ticket()
             {
                 Id = Identifier<Ticket>.GenereteId(),
-                Title = "bbbbbbb",
+                Title = "Security problem",
                 UserId = testUser.Id,
                 TicketStatus = TicketStatus.Open,
-                Description = "ggggggg",
+                Description = "Install firewall",
             };
             Tickets.Add(ticket1);
             Ticket ticket2 = new Ticket()
             {
                 Id = Identifier<Ticket>.GenereteId(),
-                Title = "bbbbbbb",
+                Title = "Issues with proper work",
                 UserId = testUser.Id,
                 TicketStatus = TicketStatus.Open,
-                Description = "ggggggg"
+                Description = "Swipe up my PC"
             };
             Tickets.Add(ticket2);
         }
